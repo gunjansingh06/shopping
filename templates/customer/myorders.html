@@ -1,0 +1,79 @@
+{% extends 'customer/layout.html' %}
+{% load static %}
+{% block content %}
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_tittle text-center">
+                    <h4>My Orders</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./index.html">Home</a>
+                        <span>My Orders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                {% if orders %}
+                    {% for order_info in order_details_list %}
+                        <div class="order-summary">
+                            <h4>Order ID: {{ order_info.order.id }}</h4>
+                            <div class="shopping__cart__table">
+                                <table cellpadding="15">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Size</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in order_info.order_details %}
+                                            <tr>
+                                                <td class="product__cart__item">
+                                                    <div class="product__cart__item__pic">
+                                                        <img src="/images/upload/{{row.product.image}}" height="120" width="100" alt="">
+                                                    </div>
+                                                    <div class="product__cart__item__text">
+                                                        <a href="/customer/product_detail/{{row.product.id}}"><h6>{{row.product.product_name}}</h6></a>
+                                                        <h5>₹ {{row.product.price}}</h5>
+                                                    </div>
+                                                </td>
+                                                <td class="qua-col first-row">
+                                                    <div class="quantity">
+                                                        <input type="number" class="w-50" name="quantity" value="{{ row.quantity }}" min="1" readonly>
+                                                    </div>
+                                                </td>
+                                                <td class="cart__price">{{ row.size }}</td>
+                                                <td class="cart__price">₹{{ row.total_price }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <div class="cart__total">
+                                    <h6>Order Total</h6>
+                                    <ul>
+                                        <li>Total <span>₹{{ order_info.order_total }}</span></li>
+                                    </ul>
+                                    <a href="{% url 'generate_invoice' order_info.order.id %}" class="primary-btn">Download Invoice</a>
+                                </div>
+                            
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-warning">No orders found for this user.</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'myadmin/common/layout.html'%}
+{% block content %} 
+ <div class="content-wrapper">
+           
+            <div class="row">
+             
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Subcategory</h4>
+                    <form class="forms-sample" method="post" action="/myadmin/update_subcat/{{result.id}}">
+                                           {% csrf_token %}
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Subcategory Name</label>
+                        <input type="text" class="form-control" name="subcat_name" id="subcat_name" placeholder="Subcategory Name" value="{{result.subcat_name}}">
+                      </div>
+                      <div class="form-group">
+                <label for="exampleInputName1">Select Category</label>
+                <select class="form-control" id="cid" name="cid">
+                    <option value="">Select Category</option>
+                    {% for row in cat %}
+                    <option value="{{row.id}}" {% if result.categories_id == row.id %}selected{% endif %}>{{row.cat_name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+
+{% endblock %}

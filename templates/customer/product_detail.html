@@ -1,0 +1,108 @@
+{% extends 'customer/layout.html' %} 
+{% block content %}
+{% load static %}
+<section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_tittle text-center">
+                        <h4 >Single Product</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <span>About Us</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+<div class="product-main-area mb-70">
+            <div class="container">
+                <div class="row  justify-content-center">
+                    <div class="col-lg-9 col-md-12 col-12 order-lg-1 order-1">
+                        <!-- product-main-area-start -->
+                        <div class="product-main-area">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6 col-12">
+                                    <img class="img-fluid" src="/images/upload/{{product.image}}" alt="" style="width:400px; height: 420px;  box-shadow: 1px 1px 17px 3px grey;">
+                                </div>
+                                <div class="col-lg-7 col-md-6 col-12">
+                                    <div class="product-info-main">
+                                        <div class="page-title">
+                                            <h1>{{product.product_name}}</h1>
+                                        </div>
+                                        <div class="product-info-stock-sku">
+                                            <span>In stock</span>
+                                            
+                                        </div>
+                                        <div class="product-reviews-summary">
+                                           
+                                            <div class="reviews-actions">
+                                                <a href="#">3 Reviews</a>
+                                                <a href="#" class="view">Add Your Review</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="product-info-price">
+
+                                            <div class="price-final">
+                                                <span>₹ {{product.price}}</span>
+                                                
+                                            </div>
+                                         <div class="product_count">
+                                            <label for="qty">Quantity:</label>
+             
+                            <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                           
+                                    </div>
+                             
+                                        </div>
+                    <form  method="post" action="/customer/insert_cart">
+                                                {% csrf_token %} 
+                        
+                        <div class="product_details_option">
+                                <div class="product_detailsoption_size">
+                                    <span>Size:</span>
+                                    {% for size in available_sizes %}
+                                    <input type="radio" class="btn-check" id="btn-check-{{ size }}" autocomplete="off" name="size" value="{{ size }}">
+                                    <label class="btn btn-outline-primary" for="btn-check-{{ size }}">{{ size }}</label>
+                                {% endfor %}
+                                </div>
+                  </div>
+
+                                        <div class="product-add-form">
+                                            
+
+                                                <input type="hidden" name="sel_id" id="sel_id" value="{{product.saler_reg_id}}">
+
+                                                <input type="hidden" name="product_id" id="product_id" value="{{product.id}}">
+
+                                               <input type="submit"  class="btn btn-info px-3 mb-2 pb-2 pt-2" value="Add to cart">
+                    </form>
+                                        </div>
+                                        <div class="product-social-links">
+                                            <div class="product-addto-links">
+                                                <p>{{product.details}}</p>
+                                              
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                        <br>
+                        <br>
+                        <!-- product-main-area-end -->
+                        <!-- product-info-area-start -->
+                        
+                        <!-- new-book-area-start -->
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+{% endblock %}

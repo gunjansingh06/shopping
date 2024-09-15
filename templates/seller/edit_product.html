@@ -1,0 +1,99 @@
+{% extends 'seller/common/layout.html'%}
+{% block content %} 
+ <div class="content-wrapper">
+           
+            <div class="row">
+             
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Product</h4>
+                    <form class="forms-sample" method="post" action="/seller/update_product/{{result.id}}" enctype="multipart/form-data">
+                                           {% csrf_token %}
+
+                    
+              <div class="form-group">
+                <label for="exampleInputName1">Select Category</label>
+                <select class="form-control" name="cid" id="cid">
+                    <option value="">Select Category</option>
+                    {% for row in categories %}
+                    <option value="{{row.id}}" {% if result.categories_id == row.id %}selected{% endif %}>{{row.cat_name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName1">Select Subcategory</label>
+                <select class="form-control" name="scid" id="scid">
+                    <option value="">Select Subcategory</option>
+                    {% for row in subcategories %}
+                    <option value="{{row.id}}" {% if result.subcategories_id == row.id %}selected{% endif %}>{{row.subcat_name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+             <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="pname" name="pname" placeholder="Product Name" value="{{result.product_name}}">
+                </div>
+             
+              <div class="form-group">
+                <label for="email">Product Image</label>
+                  <input type="file" class="form-control" id="image" name="image"  placeholder="Your Email">
+                  <img src="/images/upload/{{result.image}}" height="50" width="50">
+                  
+              </div>
+              <div class="form-group">
+                        <label for="exampleInputName1">Product price</label>
+                        <input type="number" class="form-control"  id="price" name="price"  placeholder="Product price" value="{{result.price}}">
+                </div>
+              <div class="form-group">
+                        <label for="exampleTextarea1">Product details</label>
+                        <textarea class="form-control"  id="details" name="details"  rows="4" placeholder="Product details" > {{result.details}}</textarea>
+              </div>
+              <div class="form-group">
+                        <label for="exampleInputName1">Quantity </label>
+                        <input type="number" class="form-control" id="quantity" name="quantity"  placeholder="Quantity" value="{{result.quantity}}">
+                </div>
+                <div class="form-group">
+                <label for="exampleInputCity1">Size</label>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox" id="chk1" name="size[]" value="s" {% if 's' in result.size %}checked {% endif %} class="form-check-input">
+                      S
+
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox" id="chk2" name="size[]" value="m" {% if 'm' in result.size %}checked {% endif %} class="form-check-input">
+                      M
+
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox"  id="chk3" name="size[]" value="l" {% if 'l' in result.size %}checked {% endif %}class="form-check-input">
+                      L
+
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox" id="chk4" name="size[]" value="xl" {% if 'xl' in result.size %}checked {% endif %} class="form-check-input">
+                      XL
+
+                    </label>
+                  </div>
+                  
+                </div>
+                                    
+
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+
+{% endblock %}

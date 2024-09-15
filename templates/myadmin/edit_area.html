@@ -1,0 +1,45 @@
+{% extends 'myadmin/common/layout.html'%}
+{% block content %} 
+ <div class="content-wrapper">
+           
+            <div class="row">
+             
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Area</h4>
+                    <form class="forms-sample" method="post" action="/myadmin/update_area/{{result.id}}">
+                                           {% csrf_token %}
+
+                 <div class="form-group">
+                <label for="exampleInputName1">Add Area</label>
+                <input type="text" class="form-control" name="area_name" id="area_name" placeholder="add area name" value="{{result.area_name}}">
+              </div>
+               <div class="form-group">
+                <label for="exampleInputName1">Select City</label>
+                <select class="form-control" id="city" name="city">
+                    <option value="" selected>Select City </option>
+                    {% for row in result1 %}
+                  <option value="{{row.id}}" {% if result.city_id == row.id %}selected {% endif %}>{{row.city_name}}</option>
+                   {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName1">Select state</label>
+                <select class="form-control" id="state" name="state">
+                    <option value="" selected>Select state </option>
+                    {% for row in result2 %}
+                  <option value="{{row.id}}" {% if result.state_id == row.id %}selected {% endif %}>{{row.state_name}}</option>
+                   {% endfor %}
+                </select>
+              </div>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+
+{% endblock %}

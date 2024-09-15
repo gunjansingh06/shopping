@@ -1,0 +1,141 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+{% load static %}
+ <div class="content-wrapper">
+            <!-- <div class="page-header">
+              <h3 class="page-title"> Basic Tables </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
+                </ol>
+              </nav>
+            </div> -->
+            <div class="row">
+              
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Customer Detail</h4>
+                  <!--   <p class="card-description"> Add class <code>.table-striped</code>
+                    </p> -->
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+              <thead>
+                                         <tr>
+                                            <th>
+                                              ID
+                                            </th>
+                                            <td>
+                                              {{result.user.id}}
+                                            </td>
+                                         </tr>
+                                      </thead>
+                              <tbody>
+                  <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <td>
+                      {{result.user.first_name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Last Name
+                    </th>
+                    <td>
+                      {{result.user.last_name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        User name
+                    </th>
+                    <td>
+                      {{result.user.username}}
+                    </td>
+                  </tr>
+                 
+                  <tr>
+                    <th>
+                        Email
+                    </th>
+                    <td>
+                      {{result.user.email}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Contact
+                    </th>
+                    <td>
+                      {{result.contact}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        address
+                    </th>
+                    <td>
+                      {{result.address}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Dob
+                    </th>
+                    <td>
+                      {{result.dob}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Gender
+                    </th>
+                    <td>
+                      {{result.gender}}
+                    </td>
+                  </tr>
+
+                
+                  
+                  
+                  <tr>
+                    <th>
+                        State
+                    </th>
+                    <td>
+                      {{result.state}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        City
+                    </th>
+                    <td>
+                      {{result.city}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Area
+                    </th>
+                    <td>
+                      {{result.area}}
+                    </td>
+                  </tr>
+                  
+                  
+
+                </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div> 
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'seller/common/layout.html' %}
+{% block content %}
+{% load static %}
+ <div class="content-wrapper">
+            <!-- <div class="page-header">
+              <h3 class="page-title"> Basic Tables </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
+                </ol>
+              </nav>
+            </div> -->
+            <div class="row">
+              
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card ">
+                  <div class="card-body">
+                    <h4 class="card-title">Orders Detail</h4>
+                  <!--   <p class="card-description"> Add class <code>.table-striped</code>
+                    </p> -->
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      Id
+                    </th>
+                    <td>
+                       {{order.id}}
+                    </td>
+                  </tr>
+                </thead>
+              <tbody>
+                  <tr>
+                    <th>
+                        Customer name
+                    </th>
+                    <td>
+                      {{billing.firstname}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Email
+                    </th>
+                    <td>
+                      {{billing.email}}
+                    </td>
+                  </tr>
+                  
+                 
+                  
+                 
+                  <tr>
+                    <th>
+                        State
+                    </th>
+                    <td>
+                      {{billing.state}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        City
+                    </th>
+                    <td>
+                      {{billing.city}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        Area
+                    </th>
+                    <td>
+                      {{billing.area}}
+                    </td>
+                  </tr>
+                   
+                  <tr>
+                    <th>
+                        Shipping address
+                    </th>
+                    <td>
+                      {{billing.address}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                        contact
+                    </th>
+                    <td>
+                      {{billing.contact}}
+                    </td>
+                  </tr>
+                  
+              
+                 
+                </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-lg-12 grid-margin stretch-card">
+
+                     <div class="card col-lg-12">
+                  <div class="card-body">
+                    <h4 class="card-title">Product Detail</h4>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+              <thead>
+                                                <tr>
+                                                  <th>Id</th>
+                                                  <th>Product Image</th>
+                                                  <th>Product Name</th>
+                                                  <th>Quantity</th>
+                                                  <th>Size</th>
+                                                  <th>Amount</th>
+                                                </tr>
+                  </thead>
+                                  <tbody>
+                                                {% for row in order_details %}
+                                                <tr class="active">
+                                                    <td>{{row.product.id}}</td>
+                                                    <td><img src="/images/upload/{{row.product.image}}" height="100" width="100"></td>
+                                                    <td>{{row.product.product_name}}</td>
+                                                    <td>{{row.quantity}}</td>
+                                                    <td>{{row.size}}</td>
+                                                    <td>₹ {{row.amount}}</td>  
+                                                </tr>
+                                                {% endfor %}
+                                                <tr>
+                                                    <td colspan="5"><h5>Total</h5></td>
+                                                    <!-- <td></td> -->
+                                                    <td><h5>₹ {{order.amount}}</h5></td>
+
+                                                </tr>
+                                              </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div> 
+{% endblock %}

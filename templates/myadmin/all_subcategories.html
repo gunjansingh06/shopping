@@ -1,0 +1,61 @@
+{% extends 'myadmin/common/layout.html' %}
+{% block content %}
+{% load static %}
+ <div class="content-wrapper">
+            <!-- <div class="page-header">
+              <h3 class="page-title"> Basic Tables </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
+                </ol>
+              </nav>
+            </div> -->
+            <div class="row">
+              
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Category</h4>
+                  <!--   <p class="card-description"> Add class <code>.table-striped</code>
+                    </p> -->
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+      <thead>
+              <tr>
+                <th>id</th>
+                <th>SubCategories Name</th>
+                <th>Categories id</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for row in result %}
+              <tr class="active">
+                <td>{{row.id}}</td>
+                <td>{{row.subcat_name}}</td>
+                <td>{{row.categories}}</td>
+                
+
+                <td>
+                  <a href="/myadmin/edit_subcat/{{row.id}}"><button class="btn btn-success">Edit</button></a>
+                </td>
+                <td>
+                  <a href="/myadmin/delete_subcat/{{row.id}}"><button class="btn btn-danger">Delete</button></a>
+                </td>
+
+                
+              </tr>
+              {% endfor %}
+              </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div> 
+{% endblock %}
